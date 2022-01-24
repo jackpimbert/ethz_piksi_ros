@@ -11,7 +11,8 @@ import rospy
 import math
 import quaternion
 import numpy as np
-import datetime, time, leapseconds
+import datetime, time
+from .leapseconds import *
 from collections import deque
 import std_srvs.srv
 # Import message types
@@ -1453,7 +1454,7 @@ class PiksiMulti:
         out, error = pip_show_output.communicate()
 
         # Search for version number, output assumed in the form "Version: X.X.X"
-        version_output = re.search("Version: \d+.\d+.\d+", out)
+        version_output = re.search("Version: \d+.\d+.\d+", out.decode())
 
         if version_output is None:
             # No version found
