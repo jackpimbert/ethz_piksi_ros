@@ -24,7 +24,7 @@ Python 2.6+, Python 3, Jython, Pypy support.
 [3]: https://github.com/eggert/tz/blob/master/zic.c
 [4]: http://datacenter.iers.org/eop/-/somos/5Rgv/latest/16
 """
-from __future__ import with_statement
+
 
 from collections import namedtuple
 from datetime import datetime, timedelta
@@ -251,7 +251,7 @@ if __name__ == "__main__":
     import json
     assert all(ls.dTAI_UTC == timedelta(seconds=ls.dTAI_UTC.seconds)
                for ls in leapseconds())  # ~+200 leap second until 2100
-    print(json.dumps([dict(utc=t.utc, tai=t.utc + t.dTAI_UTC,
+    print((json.dumps([dict(utc=t.utc, tai=t.utc + t.dTAI_UTC,
                            dTAI_UTC=t.dTAI_UTC.seconds)
                       for t in leapseconds()],
-                     default=str, indent=4, sort_keys=True))
+                     default=str, indent=4, sort_keys=True)))

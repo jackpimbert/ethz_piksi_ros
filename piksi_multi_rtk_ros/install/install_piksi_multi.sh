@@ -1,12 +1,12 @@
 #!/bin/bash
 
-REPO_TAG=v2.6.5 #version you want to checkout before installing
+REPO_TAG=v3.4.12 #version you want to checkout before installing
 
 #---------------- SBP ----------------
 echo " "
 echo "Installing SBP library for Piksi Multi."
 
-sudo apt install python-pip
+sudo apt install python3-pip
 sudo pip install sbp==$REPO_TAG
 sudo pip install llvmlite --upgrade
 
