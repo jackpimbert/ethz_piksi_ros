@@ -500,6 +500,7 @@ class PiksiMulti:
             ping = subprocess.Popen(command, stdout=subprocess.PIPE)
 
             out, error = ping.communicate()
+            out = out.decode("utf-8")
             # Search for 'min/avg/max/mdev' round trip delay time (rtt) numbers.
             matcher = re.compile("(\d+.\d+)/(\d+.\d+)/(\d+.\d+)/(\d+.\d+)")
 
@@ -1567,7 +1568,7 @@ class PiksiMulti:
 
         if not self.has_imu_scale:
             rospy.loginfo("Received IMU scale.")
-        self.has_imu_scale = True  
+        self.has_imu_scale = True
 
     def cb_sbp_mag_raw(self, msg_raw, **metadata):
         msg = MsgMagRaw(msg_raw)
